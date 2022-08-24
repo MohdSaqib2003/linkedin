@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button, Modal } from 'antd';
 
+// This comment is commited
+
 const data = [
     {
         type: "photo",
