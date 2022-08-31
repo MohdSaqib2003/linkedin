@@ -17,20 +17,21 @@ const Sidebar = () => {
                     <Image src="https://rb.gy/i26zak" layout="fill" priority />
                 </div>
                 <Avatar
-                    onClick={() => { }}
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXsP-u_QL4tlqX7ED4fblqRbfkhCqO3mOuZC9zDnM&s"
+                    onClick={() => { }}                    
+                    src={session?.user?.image}                    
                     // onClick={signOut}
                     // src={session?.user?.image}
                     className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
                 />
+                {console.log(session)}
                 <div className="mt-5 py-4 space-x-0.5">
                     <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
                         {/* {session?.user?.name} */}
-                        Saqib
+                       { session?.user?.name }
                     </h4>
                     <p className="text-black/60 dark:text-white/75 text-sm">
                         {/* {session?.user?.email} */}
-                        saqib@qwjhe.amoi.com
+                        { session?.user?.email }
                     </p>
                 </div>
 

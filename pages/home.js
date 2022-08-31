@@ -11,7 +11,6 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { getProviders, signIn } from "next-auth/react";
 
-
 const Home = ({ providers }) => {
     // console.log("Providers : ", providers);
     return (
