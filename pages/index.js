@@ -10,9 +10,10 @@ import { useRecoilState } from 'recoil';
 import { AnimatePresence } from "framer-motion";
 import Modal from '../components/Modal';
 import { connectToDatabase } from '../util/mongodb';
+import Widgets from '../components/Widgets'
 
 
-export default function Home({ posts }) {
+export default function Home({ posts, articles }) {
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Home({ posts }) {
     }
   });
 
-  console.log("PPP : ", posts);
+  console.log("articles : ", articles);
 
   return (
     <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
@@ -38,9 +39,11 @@ export default function Home({ posts }) {
       <main className="flex justify-center gap-x-5 px-4 sm:px-12">
         <div className="flex flex-col md:flex-row gap-5">
           <Sidebar />
-          <Feed posts={posts}/>
+          <Feed posts={posts} />
         </div>
         {/* Widgets */}
+
+        <Widgets articles={articles}/>
 
         <AnimatePresence>
           {modalOpen && (
@@ -69,10 +72,15 @@ export async function getServerSideProps(context) {
   const posts = await db.collection("posts").find().sort({ timestamp: -1 }).toArray();
 
   //add google API for news
+  console.log("API: ",process.env.NEWS_API_KEY);
+  const results = await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.NEWS_API_KEY}`).then((res)=>res.json());
+
+  
 
   return {
     props: {
       session,
+      articles:results.articles ,
       posts: posts.map((post) => ({
         _id: post?._id.toString(),
         input: post.input,

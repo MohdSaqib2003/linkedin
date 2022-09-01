@@ -6,10 +6,9 @@ import Post from './Post';
 
 const Feed = ({ posts }) => {
     const [realtimePosts, setRealtimePosts] = useState([]);
-    const [handlePost, setHandlePost] = useState(handlePostState);
+    const [handlePost, setHandlePost] = useRecoilState(handlePostState);
     const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);
-
-    
+   
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch('/api/posts', {
@@ -22,13 +21,9 @@ const Feed = ({ posts }) => {
             setUseSSRPosts(false);
         }
         fetchPosts();
-        console.log("UseEffectssss");
+    
     }, [handlePost])
     
-    console.log("HPPP",handlePost);
-    
-    console.log("Posts: ", realtimePosts);
-
     return (
         <div className='space-y-6 pb-24 max-w-lg'>
             <Input />
