@@ -22,7 +22,7 @@ const Home = ({ providers }) => {
             </Head>
             <header className='flex justify-around items-center py-4'>
                 <div className="relative w-36 h-10">
-                    <Image src={linkdinLogo} layout='fill' objectFit='contain' />
+                    <Image src={linkdinLogo} alt="logo" layout='fill' objectFit='contain' />
                 </div>
                 <div className="flex items-center sm:divide-x divide-gray-300">
                     <div className="hidden sm:flex space-x-8 pr-4">
@@ -66,7 +66,7 @@ const Home = ({ providers }) => {
                     </div>
                 </div>
                 <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[650px] top-20 right-5">
-                    <Image src={banner} layout="fill" priority />
+                    <Image src={banner} layout="fill" alt="pic" priority />
                 </div>
             </main>
         </div>
